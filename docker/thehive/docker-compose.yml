@@ -38,3 +38,5 @@ volumes:
     name: "theHive-ElasticSearch"
   theHive-CortexAnalyzers:
     name: "theHive-CortexAnalyzers"
+  theHive-data:
+    name: "theHive-data"
