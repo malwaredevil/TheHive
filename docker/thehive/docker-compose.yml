@@ -1,25 +1,40 @@
-version: "2"
+version: "3.4"
 services:
   elasticsearch:
     image: elasticsearch:6.8.8
     environment:
       - http.host=0.0.0.0
       - discovery.type=single-node
+      - xpack.security.enabled=false
+      - cluster.name=hive
+      - script.inline=true
+      - thread_pool.search.queue_size=100000
     ulimits:
       nofile:
         soft: 65536
         hard: 65536
+    volumes:
+      - theHive-ElasticSearch:/usr/share/elasticsearch/data
   cortex:
     image: thehiveproject/cortex:latest
     depends_on:
       - elasticsearch
     ports:
-      - "0.0.0.0:9001:9001"
+      - "9001:9001"
+    volumes:
+      - theHive-CortexAnalyzers:/opt/Cortex-Analyzers
   thehive:
     image: thehiveproject/thehive:latest
     depends_on:
       - elasticsearch
       - cortex
     ports:
-      - "0.0.0.0:9000:9000"
+      - "9000:9000"
     command: --cortex-port 9001
+    volumes:
+      - theHive-data:/etc/thehive
+volumes:
+  theHive-ElasticSearch:
+    name: "theHive-ElasticSearch"
+  theHive-CortexAnalyzers:
+    name: "theHive-CortexAnalyzers"
