@@ -11,6 +11,8 @@ services:
         hard: 65536
     volumes:
       - theHive-ElasticSearch:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
   cortex:
     image: thehiveproject/cortex:latest
     depends_on:
