@@ -2,9 +2,12 @@ version: "3.4"
 services:
   elasticsearch:
     image: elasticsearch:6.8.8
+    restart: always
     environment:
       - http.host=0.0.0.0
       - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ulimits:
       nofile:
         soft: 65536
@@ -15,6 +18,7 @@ services:
       - "9200:9200"
   cortex:
     image: thehiveproject/cortex:latest
+    restart: always
     depends_on:
       - elasticsearch
     ports:
@@ -23,6 +27,7 @@ services:
       - theHive-CortexAnalyzers:/opt/Cortex-Analyzers
   thehive:
     image: thehiveproject/thehive:latest
+    restart: always
     depends_on:
       - elasticsearch
       - cortex
