@@ -44,3 +44,5 @@ volumes:
     name: "theHive-CortexAnalyzers"
   theHive-data:
     name: "theHive-data"
+  theHive-CortexConfiguration-data:
+    name: "theHive-CortexConfiguration"
