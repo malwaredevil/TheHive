@@ -34,3 +34,6 @@ __pycache__/
 *.py[cod]
 *$py.class
 /bin/
+
+
+application.conf

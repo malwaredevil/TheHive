@@ -26,6 +26,7 @@ services:
     volumes:
       - theHive-CortexAnalyzers:/opt/Cortex-Analyzers
       - theHive-CortexConfiguration:/etc/cortex/
+      - theHive-yara:/MalpediaYara
   thehive:
     image: thehiveproject/thehive:3.4.0
     restart: always
@@ -37,6 +38,7 @@ services:
     command: --cortex-port 9001
     volumes:
       - theHive-data:/etc/thehive
+      - theHive-MalpediaYara:/MalpediaYara
 volumes:
   theHive-ElasticSearch:
     name: "theHive-ElasticSearch"
@@ -46,3 +48,5 @@ volumes:
     name: "theHive-data"
   theHive-CortexConfiguration:
     name: "theHive-CortexConfiguration"
+  theHive-MalpediaYara:
+    name: "theHive-MalpediaYara"
