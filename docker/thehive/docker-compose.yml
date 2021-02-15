@@ -27,6 +27,7 @@ services:
       - theHive-CortexAnalyzers:/opt/Cortex-Analyzers
       - theHive-CortexConfiguration:/etc/cortex/
       - theHive-MalpediaYara:/MalpediaYara
+      - theHive-Cortex-Data:/CortexData
   thehive:
     image: thehiveproject/thehive:3.4.0
     restart: always
