@@ -27,7 +27,7 @@ services:
       - theHive-CortexAnalyzers:/opt/Cortex-Analyzers
       - theHive-CortexConfiguration:/etc/cortex/
       - theHive-MalpediaYara:/MalpediaYara
-      - theHive-Cortex-Data:/CortexData
+      - theHive-Cortex-Data:/CortexData/VirusScan
   thehive:
     image: thehiveproject/thehive:3.4.0
     restart: always
@@ -51,3 +51,5 @@ volumes:
     name: "theHive-CortexConfiguration"
   theHive-MalpediaYara:
     name: "theHive-MalpediaYara"  
+  theHive-Cortex-Data:
+    name: "theHive-Cortex-Data"
