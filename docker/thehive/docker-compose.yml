@@ -26,7 +26,7 @@ services:
     volumes:
       - theHive-CortexAnalyzers:/opt/Cortex-Analyzers
       - theHive-CortexConfiguration:/etc/cortex/
-      - theHive-yara:/MalpediaYara
+      - theHive-MalpediaYara:/MalpediaYara
   thehive:
     image: thehiveproject/thehive:3.4.0
     restart: always
@@ -49,4 +49,4 @@ volumes:
   theHive-CortexConfiguration:
     name: "theHive-CortexConfiguration"
   theHive-MalpediaYara:
-    name: "theHive-MalpediaYara"
+    name: "theHive-MalpediaYara"  
